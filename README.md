@@ -1,4 +1,4 @@
-# SimpleSwap: A Technical Deep Dive into a Minimalist AMM 💡
+# Final project module 3 ETH Kipu Developer Pack implementation of SimpleSwap 💡
 
 ## 1. Project Overview 📜
 
