@@ -89,7 +89,7 @@ The `SimpleSwap` contract was designed to pass a series of on-chain checks execu
 
 The contract successfully passed all on-chain verification tests in Remix and on the Sepolia testnet.
 
--    **SimpleSwap address** : 0x63de1c0c952Ff0f621A510EBc756819371AAb691
+-    **SimpleSwap address** : 0xD952C64E38882B767E901Ff30F23303b8a3D3691
 -    **TestToken tokenA address**: 0xEC993982Ad62f64Da247bf396868e66a88C69D59
 -    **TestToken tokenB address**: 0xb68350a0Ca15E9C6e3524c012ef0fA78f2F87d50
 -    **SwapVerifier address**: 0x9f8F02DAB384DDdf1591C3366069Da3Fb0018220
