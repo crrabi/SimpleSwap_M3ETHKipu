@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.0;
 
-
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/token/ERC20/ERC20.sol";
 // import the IERC20 interface to interact with other tokens.
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/token/ERC20/IERC20.sol";
 
@@ -98,7 +96,7 @@ contract SimpleSwap {
     
     /**
      * @dev Calculates the square root of a number using the Babylonian method.
-     * This is the exact, battle-tested implementation from Uniswap V2, as requested.
+     * This is the exact, battle-tested implementation from Uniswap V2.
      * @param y The number to calculate the square root of.
      * @return z The integer square root of y.
      */
@@ -188,7 +186,7 @@ contract SimpleSwap {
                 liquidity = _sqrt(amountA * amountB);
             } else {
                 // For subsequent providers, liquidity is minted proportionally to the existing total supply.
-                // We calculate based on both tokens and take the minimum to be fair to the user.
+                // calculate based on both tokens and take the minimum to be fair to the user.
                 uint liquidityA = (amountA * _totalSupply) / reserveA;
                 uint liquidityB = (amountB * _totalSupply) / reserveB;
                 liquidity = liquidityA < liquidityB ? liquidityA : liquidityB;
@@ -198,7 +196,7 @@ contract SimpleSwap {
         require(liquidity > 0, "INSUFFICIENT_LIQUIDITY_MINTED");
         // Mint the new LP tokens to the recipient.
         _mint(to, liquidity, pairId);
-         // Finally, update the contract's stored reserves to reflect the new state.
+         // Update the contract's stored reserves to reflect the new state.
         _update(tokenA, tokenB, pairId);
     }
     /**
@@ -234,9 +232,9 @@ contract SimpleSwap {
         require(amountA >= amountAMin, "INSUFFICIENT_A_AMOUNT");
         require(amountB >= amountBMin, "INSUFFICIENT_B_AMOUNT");
 
-        // First, burn the user's LP tokens.
+        // Burn the user's LP tokens.
         _burn(msg.sender, liquidity, pairId);
-        // Then, send them the corresponding underlying tokens.
+        // Send them the corresponding underlying tokens.
         IERC20(tokenA).transfer(to, amountA);
         IERC20(tokenB).transfer(to, amountB);
         // Update the reserves to reflect the withdrawal.
@@ -244,7 +242,7 @@ contract SimpleSwap {
     }
     /**
      * @notice Swaps an exact amount of an input token for as much as possible of an output token.
-     * @dev This implementation only supports direct swaps (a path of two tokens). It includes no fees.
+     * @dev This implementation only supports direct swaps (a path of two tokens).
      * @param amountIn The exact amount of input tokens to be swapped.
      * @param amountOutMin The minimum amount of output tokens the user will accept (slippage protection).
      * @param path An array of token addresses. Must be [inputToken, outputToken].
